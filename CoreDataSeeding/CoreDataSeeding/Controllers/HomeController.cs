@@ -1,4 +1,5 @@
-﻿using CoreDataSeeding.Models;
+﻿using CoreDataSeeding.Data;
+using CoreDataSeeding.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,30 +12,16 @@ namespace CoreDataSeeding.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger; //added Comment
+        private readonly SchoolContext _context; 
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(SchoolContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            string Deneme1 = string.Empty;
-            string Deneme2 = string.Empty;
-            string Deneme3 = string.Empty;
-            string Deneme4 = string.Empty;
-            string Deneme5 = string.Empty;
-            string Deneme6 = string.Empty;
-            string Deneme7 = string.Empty;
-            string Deneme8 = string.Empty;
-            string Deneme9 = string.Empty;
-            string Deneme10 = string.Empty;
-            string Deneme11 = string.Empty;
-            string Deneme12 = string.Empty;
-            string Deneme13 = string.Empty;
-            string Deneme14 = string.Empty;
-            string Deneme15 = string.Empty;
+
             return View();
         }
 

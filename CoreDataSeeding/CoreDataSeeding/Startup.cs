@@ -1,6 +1,8 @@
+using CoreDataSeeding.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,6 +25,8 @@ namespace CoreDataSeeding
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<SchoolContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("MsSQLConnection")));
             services.AddControllersWithViews();
         }
 
@@ -32,6 +36,7 @@ namespace CoreDataSeeding
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                DataSeeding.Seed(app); //Uygulama geliþtirme aþamasýnda olduðumuzu anlamak için Properties/Debug 'tan görebiliriz
             }
             else
             {
